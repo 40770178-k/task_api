@@ -23,7 +23,6 @@ urlpatterns = [
     path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    # Updated: Prefix router endpoints under "api/" instead of root
-    # CHANGED THIS LINE ↓↓↓
-    path('api/', include(router.urls)),  
+    # Expose router endpoints at root here; project urls already prefix with 'api/'
+    path('', include(router.urls)),  
 ]

@@ -2,12 +2,12 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer, RegisterSerializer
-
+from .permisssions import IsOwner
 class TaskViewSet(viewsets.ModelViewSet):
 
     queryset = Task.objects.all()               # base queryset (will be filtered in get_queryset)
     serializer_class = TaskSerializer            # which serializer to use for (de)serializing Task instances
-    permission_classes = [IsAuthenticated]      # only logged-in users can access these endpoints
+    permission_classes = [IsAuthenticated,IsOwner]      # only logged-in users can access these endpoints
 
     # Optional: enable common filtering/searching/ordering (no extra imports here because configured in settings)
     filterset_fields = ['completed']            # lets clients filter with ?completed=true

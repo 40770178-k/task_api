@@ -2,7 +2,7 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer, RegisterSerializer
-from .permisssions import IsOwner
+from .permissions import IsOwner
 class TaskViewSet(viewsets.ModelViewSet):
 
     queryset = Task.objects.all()               # base queryset (will be filtered in get_queryset)

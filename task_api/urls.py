@@ -18,6 +18,8 @@ router.register(r'tasks', TaskViewSet, basename='task')  # /api/tasks/
 urlpatterns = [
     # User registration endpoint
     path('auth/register/', RegisterView.as_view(), name='register'),
+    # Optional alias to match /api/register/
+    path('register/', RegisterView.as_view(), name='register_alias'),
 
     # JWT authentication endpoints
     path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
